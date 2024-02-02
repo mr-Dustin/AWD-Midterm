@@ -272,6 +272,14 @@ section{
         text-align: center;
         font-size: 3rem;
     }
+
+
+    img{
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        height: 50px;
+    }
 }
 
 
@@ -322,6 +330,7 @@ section{
 
     span{
         color: #f6cf23;
+        font-weight: bold;
     }
 }
 
@@ -330,7 +339,7 @@ section{
     box-shadow: 5px 5px 20px #f6cf23;
     border-radius: 5px;
     left: 5rem;
-    height: 800px;
+    height: 600px;
     width: 800px;
     padding: 30px;
 }
