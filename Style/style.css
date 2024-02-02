@@ -9,12 +9,12 @@
     scroll-snap-type: y mandatory;
 }
 
-pallete{
-    background-color: #1e0107; /* Background */
-    background-color: #fedce3; /* Text */
-    background-color: #fa8195; /* Primary */
-    background-color: #985706; /* Secondary */
-    background-color: #f6cf23; /* Accent */
+:root{
+    --clr-1: #1e0107; /* Background */
+    --clr-2: #fedce3; /* Text */
+    --clr-3: #fa8195; /* Primary */
+    --clr-4: #985706; /* Secondary */
+    --clr-5: #f6cf23; /* Accent */
 }
 
 body{
@@ -144,9 +144,46 @@ section{
     height: 500px;
     width: 500px;
     margin: auto 0;
-    border: 1px solid #985706;
-    box-shadow: 5px 5px 20px #f6cf23;
-    border-radius: 5px;
+}
+
+#glowcard{
+    width: 500px;
+    height: 500px;
+    border-radius: 0.5rem;
+    position: relative;
+    background: var(--clr-1);
+}
+
+#glowcard::before,
+#glowcard::after{
+    content: '';
+    position: absolute;
+    inset: -.5rem;
+    border-radius: inherit;
+    z-index: -1;
+    background: conic-gradient(from var(--gradient-angle), 
+    var(--clr-1),var(--clr-2), var(--clr-3), var(--clr-4), var(--clr-5),
+    var(--clr-1), var(--clr-2), var(--clr-3), var(--clr-4), var(--clr-5));
+    animation: rotation 5s linear infinite;
+}
+
+#glowcard::after{
+    filter:blur(3.5rem);
+}
+
+@property --gradient-angle{
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes rotation{
+    0%{
+        --gradient-angle: 0deg;
+    }
+    100%{
+        --gradient-angle: 360deg;
+    }
 }
 
 .section__text{
@@ -289,20 +326,11 @@ section{
 }
 
 .box-container-left{
-    border: 2px solid #80fa9a;
+    border: 1px solid #985706;
+    box-shadow: 5px 5px 20px #f6cf23;
+    border-radius: 5px;
     left: 5rem;
     height: 800px;
     width: 800px;
     padding: 30px;
-}
-
-.lower .left{
-    position: relative;
-    border: 2px solid #80fa9a;
-    width: 200px;
-}
-
-.lower .right{
-    position: absolute;
-    border: 2px solid #80fa9a;
 }
